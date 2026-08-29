@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div>
+            <h1>Pokémon Database</h1>
+            <img src="https://images.seeklogo.com/logo-png/11/2/pokemon-logo-png_seeklogo-110206.png" alt="pokemon logo"> <br>
+
+            <input type="text" placeholder="Nome do seu Pokemon"> <br> <br>
+            <button>Confirmar</button>
+        </div>
+
+        <div id="resultado"></div>
+        <img id="sprite" alt="" width="140" height="140">
+
+    </main>
+</body>
+
+<script>
+    // pega as coisa da pagina
+const button = document.querySelector("button");
+const input = document.querySelector("input");
+const resultado = document.querySelector("#resultado");
+const foto = document.querySelector("#sprite"); 
+
+button.addEventListener("click", () => {
+  const name = input.value;
+  console.log(name);
+
+  fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    .then(res => {
+  if (!res.ok) {
+    resultado.innerHTML = "Pokémon não encontrado!"; // genuinamente nao sei oq faz
+    foto.src = "";
+    throw new Error("não achou");
+  }
+  return res.json();
+})
+    .then(data => {
+      console.log(data);
+
+      if (!data.name) {
+      resultado.innerHTML = "Pokémon não encontrado!"; // ve se o nome do pokemon existe
+      foto.src = "";
+      return;
+    }
+
+      let texto = `NOME: ${data.name} <br> HABILIDADE 1: ${data.abilities[0].ability.name}`;
+
+  if (data.abilities[1]) {
+    texto += `<br> HABILIDADE 2: ${data.abilities[1].ability.name}`; // verifica se tem mais de 1 habilidade
+  }
+
+      resultado.innerHTML = texto
+      foto.src = data.sprites.front_default; //ambos imprimem os textinho
+    });
+});
+
+
+
+
+
+</script>
+</html>
