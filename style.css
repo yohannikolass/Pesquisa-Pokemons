@@ -1,0 +1,56 @@
+:root {
+    --title: #FFCB05; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main{
+    text-align: center;
+}
+
+h1 {
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 60px;
+    color: var(--title);
+    -webkit-text-stroke: 3px #2A75BB;
+}
+
+button {
+    font-family: var(--font-family);
+    padding: 10px;
+    font-size: medium;
+    font-weight: bold;
+    border-color: #2A75BB;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 3px;
+    background-color: #ffffff;
+    transition: .2s;
+}
+
+button:hover {
+    cursor: pointer;
+    padding: 15px;
+    background-color: #ddffd6;
+    transition: .2s;
+}
+
+input{
+    font-family: var(--font-family);
+    padding: 10px;
+    font-size: medium;
+    font-weight: bold;
+    border-color: #2A75BB;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+#resultado{
+    font-family: var(--font-family);
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+    transition: .2s;
+}
+
